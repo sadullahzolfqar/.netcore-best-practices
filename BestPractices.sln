@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestPractices", "BestPractices\BestPractices.csproj", "{39F32813-CC51-45BD-BD95-293B78096E10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BestPractices", "BestPractices\BestPractices.csproj", "{39F32813-CC51-45BD-BD95-293B78096E10}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WcfClientService", "WcfClientService\WcfClientService.csproj", "{6CA2E933-0C75-4A8B-BC6C-8B6F5546BAE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logics", "Logics\Logics.csproj", "{96D91383-3A63-4BDC-958D-DF9203801935}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{39F32813-CC51-45BD-BD95-293B78096E10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39F32813-CC51-45BD-BD95-293B78096E10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39F32813-CC51-45BD-BD95-293B78096E10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CA2E933-0C75-4A8B-BC6C-8B6F5546BAE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CA2E933-0C75-4A8B-BC6C-8B6F5546BAE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CA2E933-0C75-4A8B-BC6C-8B6F5546BAE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CA2E933-0C75-4A8B-BC6C-8B6F5546BAE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96D91383-3A63-4BDC-958D-DF9203801935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96D91383-3A63-4BDC-958D-DF9203801935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96D91383-3A63-4BDC-958D-DF9203801935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96D91383-3A63-4BDC-958D-DF9203801935}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
