@@ -7,4 +7,4 @@
 
 ## Contents
 
-* Wcf client service Examples Services:(Uyumsoft and EFinans)
+* Wcf client service With SOLID
