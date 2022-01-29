@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PlatformService.Data;
 using PlatformService.Dtos;
 using PlatformService.Models;
+using PlatformService.SyncDataServices.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,12 @@ namespace PlatformService.Controllers
     {
         private readonly IPlatformRepo platformRepo;
         private readonly IMapper mapper;
-        public PlatformsController(IPlatformRepo platformRepo, IMapper mapper)
+        private readonly ICommandDataClient commandDataClient;
+        public PlatformsController(IPlatformRepo platformRepo, IMapper mapper, ICommandDataClient commandDataClient)
         {
             this.platformRepo = platformRepo;
             this.mapper = mapper;
+            this.commandDataClient = commandDataClient;
         }
 
         [HttpGet]
@@ -48,7 +51,7 @@ namespace PlatformService.Controllers
         }
 
         [HttpPost]
-        public ActionResult<PlatformReadDto> CreatePlatform([FromBody] PlatformCreateDto platformCreateDto)
+        public async Task<ActionResult<PlatformReadDto>> CreatePlatform([FromBody] PlatformCreateDto platformCreateDto)
         {
             Platform platformModel = mapper.Map<Platform>(platformCreateDto);
 
@@ -56,6 +59,14 @@ namespace PlatformService.Controllers
             platformRepo.SaveChanges();
 
             PlatformReadDto platformReadDto = mapper.Map<PlatformReadDto>(platformModel);
+
+            try
+            {
+                await commandDataClient.SendPlatformToCommand(platformReadDto);
+            }
+            catch(Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
 
             return CreatedAtRoute(nameof(GetPlatformById), new { Id = platformReadDto.Id }, platformReadDto);
         }

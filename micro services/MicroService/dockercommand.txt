@@ -1,0 +1,16 @@
+docker build -t sadullahzolfqar/platformservice .
+docker run -p 8080:80 sadullahzolfqar/platformservice 
+docker push sadullahzolfqar/platformservice
+
+kubectl apply -f platforms-np-srv.yaml
+
+kubectl rollout restart deployment platforms-depl
+
+ kubectl get service
+ kubectl get pods
+ kubectl get deployment
+
+ kubectl get pods --namespace=ingress-nginx
+
+ kubectl create secret generic mssql --from-literal=SA_PASSSWORD="@sado1512"
+ kubectl create secret generic mysql --from-literal=SA_PASSWORD="@sado1512My"
