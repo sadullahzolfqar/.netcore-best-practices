@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PlatformService.AsyncDataServices;
 using PlatformService.Data;
 using PlatformService.SyncDataServices.Http;
 
@@ -29,20 +30,24 @@ namespace PlatformService
 
         public void ConfigureServices(IServiceCollection services)
         {
-            if (_env.IsProduction())
-            {
-                Console.WriteLine("---> Using SqlServer Db");
-                services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("PlatformsConn"));
-            }
-            else
-            {
-                Console.WriteLine("---> Using InMem Db");
-                services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("IMem"));
-            }
-           
+            //if (_env.IsProduction())
+            //{
+            //    Console.WriteLine("---> Using SqlServer Db 003");
+            //    var serverVersion = new MySqlServerVersion(new Version(8, 0, 28));
+            //    services.AddDbContext<AppDbContext>(opt => opt.UseMySql(Configuration.GetConnectionString("PlatformsConn").ToString(), serverVersion));
+            //}
+            //else
+            //{
+            //    Console.WriteLine("---> Using InMem Db");
+
+            //}
+
+            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("IMem"));
+
             services.AddScoped<IPlatformRepo, PlatformRepo>();
 
             services.AddScoped<ICommandDataClient, HttpCommandDataClient>();
+            services.AddSingleton<IMessageBusClient, MessageBusClient>();
 
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -63,7 +68,7 @@ namespace PlatformService
                 endpoints.MapControllers();
             });
 
-            PrepDb.PrepPopulation(app, env.IsProduction());
+            PrepDb.PrepPopulation(app, false);
         }
     }
 }

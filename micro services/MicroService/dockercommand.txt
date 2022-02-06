@@ -1,6 +1,6 @@
 docker build -t sadullahzolfqar/platformservice .
 docker run -p 8080:80 sadullahzolfqar/platformservice 
-docker push sadullahzolfqar/platformservice
+ 
 
 kubectl apply -f platforms-np-srv.yaml
 
