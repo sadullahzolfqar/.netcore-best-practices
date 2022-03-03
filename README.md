@@ -15,3 +15,5 @@
   - RabbitMQ message bus ()
   - Dockerize
   - kubernates
+* Polly fault handling retry
+* Custom Response Wrapper for Common Response and Managing Exceptions
