@@ -1,4 +1,5 @@
 docker build -t sadullahzolfqar/platformservice .
+docker build -f 'project\Platform\Dockerfile' -t sadullahzolfqar/platformservice .
 docker run -p 8080:80 sadullahzolfqar/platformservice 
  
 
