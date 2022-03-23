@@ -72,7 +72,7 @@ namespace CommandsService.AsyncDataServices
             Console.WriteLine("--> We have sent message");
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             Console.WriteLine("--> MessageBus Disposed");
             if (channel.IsOpen)

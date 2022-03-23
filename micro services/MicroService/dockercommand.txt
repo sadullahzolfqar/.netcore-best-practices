@@ -14,3 +14,5 @@ kubectl rollout restart deployment platforms-depl
 
  kubectl create secret generic mssql --from-literal=SA_PASSSWORD="@sado1512"
  kubectl create secret generic mysql --from-literal=SA_PASSWORD="@sado1512My"
+
+ https://www.gencayyildiz.com/blog/rabbitmq-yazi-dizisi/
